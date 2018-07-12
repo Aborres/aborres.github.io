@@ -26,7 +26,7 @@ As I finished quickly my week tasks I started to work on my next week objectives
 
 At this point, the logical sub-systems are based in component design. Only the GameObjects of the engine can have these components and these components have their own state. Each subsystem has its own state to allow the engine to launch each component system in a different thread. Although I have most of the components in an early stage, I have already started working: RenderComponent, TransformComponent and CameraComponent. The design of the update of these components has been made following this graph:
 
-![Main loop - Graph]({{ "/assets/images/2018-04-07-MAIN_LOOP.png" | absolute_url }})
+![Main loop - Graph]({{ "/assets/images/2018-04-07-MAIN_LOOP.png"}})
 
 It is still an early stage of the engine and this graph will change soon, most of the components will have more behaviors and more components will have to be added to the design; however, at this point, I have this system fully working. With all of this implemented, I have a simple demo running with one cube turning on the screen. It is a simple demo; however, its finality is to test if all the components are working besides all the extra features that I have implemented to develop these components. Material, uniform, mesh, mesh builder, component, object and gameobject are some examples of functionality of the engine.
 

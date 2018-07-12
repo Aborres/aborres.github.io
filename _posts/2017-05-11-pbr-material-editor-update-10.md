@@ -20,7 +20,7 @@ tags:
 I have been away from the blog for some weeks; however, in these three weeks, I have been finishing what I had left to do for my final project. [In the last post](http://aborres.com/post/pbr-material-editor-update-9/), I talked about the final IBL implementation I was producing. At that time, I had finished the radiance and irradiance sphere convolution in terms of shading; however, now I have integrated that convolution inside of the editor. I have introduced many different tools inside of the editor this week, figure 1 shows most of the debugging or lighting tools.
 
 
-![Editor Tools]({{ "/assets/images/2018-04-07-engine_tools.jpg" | absolute_url }})
+![Editor Tools]({{ "/assets/images/2018-04-07-engine_tools.jpg"}})
 *Figure 1: Editor Tools*
 
 
@@ -28,12 +28,12 @@ The window in the middle shows the Environment Editor. This tool allows to load�
 
 I had some other tasks in my TODO list and all of them are done. Now it is possible to change the material of the models from the default list or even to load custom shading and I have also integrated the possibility to save and load entire scenes directly from the editor. The custom format I am using stores all the information every model needs to be rendered (Shaders, Uniforms, Textures and Geometry info). Depending on the scene, the size of the textures and the amount of geometry info it could take relatively long loading times; therefore, I am planning to split the loading system to be able to split individual exported scenes and load each object parallel using the task manager system, Figure 2 shows a full scene loaded completely from disk at once with my custom format.
 
-![Vangogh Room]({{ "/assets/images/2018-04-07-vangogh.gif" | absolute_url }})
+![Vangogh Room]({{ "/assets/images/2018-04-07-vangogh.gif"}})
 *Figure 2, Van Gogh room*
 
 I have also introduced some other extra features that I thought could be interesting to implement inside of the engine. As Figure 2 shows, I have implemented the typical FPS camera movement inside of the editor. Figure 3, shows the implementation of an arc ball rotation, something quite useful when comparing and reviewing visual aspects. These two movements are not complex by their selves; however, the actual implementation was trickier than I expected. In [Post 5](http://aborres.com/post/pbr-material-editor-update-5/), I introduced a small commentary about the troubleshooting in the camera lookAt implementation inside of the engine. At that time I worked with these two movements; however, they produced some unexpected troubles. The scenegraph core of the engine at that point was based on Euler angles to compute the rotations inside of the pipeline. Euler angles provide a human interface that can be easily used; however, this system can produce gimbal lock problems. In a quick explanation, Euler angles work defining three different amounts of rotation for each 3D axis (XYZ). The problem comes when you can represent the same rotation as rotating one axis or rotating the other two. This creates a consistency problem when defining rotations than can end with the alignment of two different axis. [This video](https://www.youtube.com/watch?v=zc8b2Jo7mno) illustrates deeply the gimbal lock problem.
 
-![Camera Orbit]({{ "/assets/images/2018-04-07-camera_orbit.gif" | absolute_url }})
+![Camera Orbit]({{ "/assets/images/2018-04-07-camera_orbit.gif"}})
 *Figure 3, Arc ball camera movement*
 
 The solution to this problem was the introduction of Quaternions inside of the engine. Quaternions are a 4D
