@@ -1,0 +1,31 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+@charset "utf-8";
+
+// Theme skin
+@import "basically-basic/themes/{{ site.data.theme.skin | default: 'default' }}";
+
+$accent-color: #fca503;
+
+@import "basically-basic";
+
+.align_center {
+  align: center;
+  text-align: center;
+}
+
+.half_image {
+  width: 50%;
+}
+
+.align_image_left {
+  float: left;
+  padding-right: 20px;
+}
+
+.align_image_right {
+  float: right;
+  padding-left: 20px;
+}

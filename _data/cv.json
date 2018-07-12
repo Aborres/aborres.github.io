@@ -1,0 +1,90 @@
+{
+  "basics": {
+    "name": "Jose Manuel Naranjo Temprano",
+    "label": "Engine programmer",
+    "picture": "",
+    "email": "contact@aborres.com",
+    "website": "aborres.com",
+    "summary": "",
+    "location": {
+      "city": "Newcastle upon Tyne",
+      "countryCode": "UK",
+    },
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "Jose Manuel Naranjo Temprano",
+        "url": "linkedin.com/in/jose-manuel-naranjo-temprano/"
+      }
+    ]
+  },
+  "work": [
+    {
+      "company": "Ubisoft Reflections",
+      "position": "Junior Engine Programmer",
+      "website": "",
+      "startDate": "2017-07-31",
+      "endDate": "Today",
+      "summary": "Graphics Engine",
+      "highlights": []
+    },
+    {
+      "company": "MyBrana",
+      "position": "Engine Programmer",
+      "website": "",
+      "startDate": "2016-08-01",
+      "endDate": "2017-06-12",
+      "summary": "",
+      "highlights": []
+    }
+  ],
+  "education": [
+    {
+      "institution": "Teesside University",
+      "area": "Games programming",
+      "spec": "Graphics and Physics",
+      "studyType": "Bsc(Hons)",
+      "startDate": "2016-09-01",
+      "endDate": "2017-06-01",
+    },
+    {
+      "institution": "Esat",
+      "area": "Games Programming",
+      "spec": "Graphics",
+      "studyType": "HND",
+      "startDate": "2013-09-01",
+      "endDate": "2016-07-01",
+    },
+    {
+      "institution": "UCLM",
+      "area": "Civil Engineering",
+      "spec": "",
+      "studyType": "Bsc(Hons)",
+      "startDate": "2011-09-01",
+      "endDate": "2013-06-01",
+    }
+
+  ],
+  "skills": [
+    {
+      "name": "Programming",
+      "level": "Master",
+      "keywords": [
+        "C++",
+        "C",
+        "OpenGL",
+        "GLSL"
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "language": "Spanish",
+      "fluency": "Native"
+    },
+    {
+      "language": "English",
+      "fluency": "Fluent"
+    }
+  ],
+}
