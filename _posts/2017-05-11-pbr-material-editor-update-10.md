@@ -15,7 +15,7 @@ tags:
 - Orange Engine
 ---
 
-![PBR Gun]({{ "/assets/images/2018-04-07-rotating_gun.gif" | absolute_url }})
+![PBR Gun]({{ "assets/images/2018-04-07-rotating_gun.gif" | absolute_url }})
 
 I have been away from the blog for some weeks; however, in these three weeks, I have been finishing what I had left to do for my final project. [In the last post](http://aborres.com/post/pbr-material-editor-update-9/), I talked about the final IBL implementation I was producing. At that time, I had finished the radiance and irradiance sphere convolution in terms of shading; however, now I have integrated that convolution inside of the editor. I have introduced many different tools inside of the editor this week, figure 1 shows most of the debugging or lighting tools.
 
