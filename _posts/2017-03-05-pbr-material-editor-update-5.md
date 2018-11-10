@@ -7,6 +7,7 @@ link: http://aborres.com/post/pbr-material-editor-update-5/
 slug: pbr-material-editor-update-5
 permalink: /post/pbr-material-editor-update-5/
 title: 'PBR: Material Editor – Update 5'
+thumbnail: "assets/images/2018-04-07-picking.gif"
 wordpress_id: 407
 categories:
 - Graphics
@@ -14,20 +15,11 @@ categories:
 - Post
 - Project
 - PBR-Material-Editor
-tags:
-- games
-- Graphics
-- OpenGL
-- post
-- projects
-- Render
-- Rendering
-- teesside
-- uk
-- university
+tags: [games, Graphics, OpenGL, post, projects, Render, Rendering,
+       teesside, uk, university]
 ---
 
-![BugVsFeature]({{ "/assets/images/bugvsfeature.jpg"}})
+![BugVsFeature]({{ "/assets/images/bugvsfeature.jpg" | absolute_url }})
 
 This fifth week I was supposed to be working on the initial implementation of PBR and IBL; however, this week I have
 been pretty busy with some work/university stuff, even so, I have been working on some other tasks I was needing to
@@ -44,11 +36,11 @@ Since I finished the main engine structure I wanted to ask one of my lecturers f
 
 One of the principal topics we discussed in the talk was the implementation of a lookAt method for all the transforms components. I have the system working right now; however, I would like to clarify some aspects where I got stuck. As the engine is based on a multi-threaded system I can not directly modify some aspects inside of the components because "maybe at some point, a thread will come and modify what I did." Let me explain this with an example, working with the transform component I am not allowed to modify the model matrix itself because when the thread in charge of updating the scene graph comes it will override that matrix and I will lose all the changes I had performed. However, that thread only modifies the model matrix; therefore, I am allowed to modify the rest of elements of the component (position, rotation and scale) and taking advantage of this I started to implement the lookat feature. The way I planned was to compute the global transformation to orientate this node to the desired point of view using a generated view matrix. I am using [GLM](http://glm.g-truc.net/0.9.8/index.html) inside the engine for all the mathematics transformations. Although, the answer was simple but not that simple enough because of the design of the engine and some forgotten mathematical properties that I would not forget again. The task is to generate a matrix that orientates the local object to a specific point. The glm::lookAt requires the position of the node, the desired target point of view and a reference vertical axis to calculate a view matrix.
 
-![transpose and inverse demo]({{ "/assets/images/2018-04-07-view_matrix.jpg"}})
+![transpose and inverse demo]({{ "/assets/images/2018-04-07-view_matrix.jpg" | absolute_url }})
 
 The view matrix is a 4x4 matrix which contains a new coordinates system to transform points from a system of coordinates (in most cases world space) to the "view" space of coordinates. The idea was to compute a lookAt matrix glm::decompose that matrix into the TRS components (transform, rotation and scale) and use those generated components into the component. However, there are a few things to take into account. The view matrix is generated to rotate the scene in the opposite direction it should, this can be easily explained if you think of relative moment and cameras. Let's think about a scene with a camera at (0,0,5) and a cube at (0,0,0) where if you move the object in the positive X axis (using OpenGL coordinates system) the cube will disappear through the right edge of the screen; however, if you apply that movement to the camera, the camera would disappear through the right edge but the cube will be moving to the left (relative moment). But I do not want such movements in my lookAt method because in this case all the objects are located in world space. However, there is another problem with this movement. The lookAt transforms the objects to the view space but what I want is to transform the actual object to be pointing to a specific point; therefore, the actual object can not represent the origin in the coordinate system as he is supposed to be rotated in world to a specific point. The solution to the actual problem is resolved performing the transpose and the inverse to erase rotations and to switch the coordinate system. If you have some knowledge about mathematics and matrix operations you could be thinking: "But the transpose and the inverse are exactly the same for orthonormal matrix's so inverting a matrix twice will end in the original matrix". And that is true the inverse and the transpose operations are equitable in the **orthonormal matrix**. The view matrix contains the edge directions for the new coordinates system and also contains the position of the origin of the new system, this means, that view matrix can be or not an orthonormal matrix.
 
-![matrices conversion]({{ "/assets/images/2018-04-07-math_matrixes.jpg"}})
+![matrices conversion]({{ "/assets/images/2018-04-07-math_matrixes.jpg" | absolute_url }})
 
 
 In the cases where the view matrix is not orthonormal we can not assume that the inverse and the transpose are equitable, in these cases the inverse of the transpose its equal to the transpose of the inverse, therefore, these transformations will always end in the view matrix I wanted to calculate. The next step is to multiply the matrix by the inverse of the parent's matrix (to perform the transformation in local space) and decompose the matrix into its components to apply the desired rotation to the actual object.

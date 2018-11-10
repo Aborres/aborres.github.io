@@ -7,6 +7,7 @@ link: aborres.com/post/pbr-material-editor-update-7/
 slug: pbr-material-editor-update-7
 permalink: /post/pbr-material-editor-update-7/
 title: 'PBR: Material Editor – Update 7'
+thumbnail: "assets/images/2018-04-07-pbr_demo7.gif"
 wordpress_id: 452
 categories:
 - Post
@@ -22,7 +23,7 @@ tags:
 - university
 ---
 
-![Object_Picking]({{ "/assets/images/2018-04-07-pbr_demo7.gif"}})
+![Object_Picking]({{ "/assets/images/2018-04-07-pbr_demo7.gif" | absolute_url }})
 
 ### Structure Modifications & New Features
 
@@ -33,7 +34,7 @@ The development of a game engine can be complex and enormous. New features requi
 
 
 PBR models are complex to implement and to integrate and usually, the mathematics are complex and the developers integrate tricks (which they rarely comment) inside of their code to improve the visual appearance even if it is not physically correct. I have been revisiting the Unreal Engine 4 presentations and diverse info they have published to improve the integration of the model inside of the engine. I still have lots of work to do with this specific model, I have to integrate IBL ambient illumination into the model the full generation of the IBL textures. I am still considering if this should be done as an external tool or inside of the editor. The main idea is to finish this work this week in order to start working on other PBR models such as Unity's model (which is quite similar to UE4's model) or Disney model (probably the most complex and expensive to compute). I also would like to introduce IBL texture generation for traditional corrected models such as Blinn-Phong or Oren-Nayart which could also produce really good visual results.
-![MRComparison]({{ "/assets/images/2018-04-07-UE42.jpg"}})
+![MRComparison]({{ "/assets/images/2018-04-07-UE42.jpg" | absolute_url }})
 
 I still have work to do; however, I think I am near to finish working on this specific model.
 

@@ -23,26 +23,26 @@ tags:
 - university
 ---
 
-![Model Loading]({{ "/assets/images/2018-04-07-modelloading4.jpg"}})
+![Model Loading]({{ "/assets/images/2018-04-07-modelloading4.jpg" | absolute_url }})
 
 At this point of the development, the need of a test area to work with models and textures and play with some of their aspects has been growing. Furthermore, according to my schedule, I was supposed to be working on editor features; therefore, this week I have been designing the editor and its features. The first thing I did was to integrate into the editor the drag and drop functionality. At this point, all files dropped into the screen are collected into the editor.
 
 
 ### The Catalog
 
-![Catalog Window]({{ "/assets/images/2018-04-07-catalog.png"}}){: .align_image_left }The catalog collects all the items dropped into the editor. The items are sorted and show different options depending on their type, this means, fbx, dae, obj or any kind of model will have an add button to add that model into the current scene. The objects will hang directly on the root node and would be modified from other windows of the editor. Also, I am working on mouse movement and interaction on the screen and right now I have keyboard movement using the classical WASD keys with the second button of the mouse pressed and I am working on a camera arc rotation system using the wheel mouse button. I would also like to introduce into the editor mouse picking to be able to select different models and edit their properties without having to search for them in the scene window. Other kinds of items such as textures, scripts, fonts, etc. Will show their information and properties on the screen with a little preview image on the catalog window and the user will be allowed to modify some parameters (depending on the item) from more advanced window options. For example, at some point, I am planning to introduce texture channel modifying or even to be able to modify, write and save scripts and shaders to test them directly from the editor. Also, I have to introduce some functionality to allow the user to reload shaders, scripts and composer (if the user is using the scriptable composer version) to re-import all those items into the editor and, this way, avoid unnecessary reloads of the entire program.
+![Catalog Window]({{ "/assets/images/2018-04-07-catalog.png" | absolute_url }}){: .align_image_left }The catalog collects all the items dropped into the editor. The items are sorted and show different options depending on their type, this means, fbx, dae, obj or any kind of model will have an add button to add that model into the current scene. The objects will hang directly on the root node and would be modified from other windows of the editor. Also, I am working on mouse movement and interaction on the screen and right now I have keyboard movement using the classical WASD keys with the second button of the mouse pressed and I am working on a camera arc rotation system using the wheel mouse button. I would also like to introduce into the editor mouse picking to be able to select different models and edit their properties without having to search for them in the scene window. Other kinds of items such as textures, scripts, fonts, etc. Will show their information and properties on the screen with a little preview image on the catalog window and the user will be allowed to modify some parameters (depending on the item) from more advanced window options. For example, at some point, I am planning to introduce texture channel modifying or even to be able to modify, write and save scripts and shaders to test them directly from the editor. Also, I have to introduce some functionality to allow the user to reload shaders, scripts and composer (if the user is using the scriptable composer version) to re-import all those items into the editor and, this way, avoid unnecessary reloads of the entire program.
 
 
 ### Scene!
 
-![Scene]({{ "/assets/images/2018-04-07-graph.png"}}){: .align_image_right }
+![Scene]({{ "/assets/images/2018-04-07-graph.png" | absolute_url }}){: .align_image_right }
 The scene window shows all the current objects in the scene. By default, the scene has a root node and a camera node. The camera node is the actual camera which is rendering the scene into the screen. The root node is the main node of the scene and all objects added to the scene will be "children" of this node. The name of the nodes comes from the model file, if the artist named the objects of his file all of them will appear in this window. The skeletal hierarchy appears on this screen as well; however, I am not planning to introduce animations or the vertexes weight unless I have enough time at the end. One thing I would like to introduce into this window is the ability to modify the hierarchy and to allow the user to reorder nodes, to change the relationship of the nodes or even to delete specific nodes or hierarchies.
 
 
 ### Inspector!
 
 <p class="align_center" markdown="1">
-![Inspector Window]({{ "/assets/images/2018-04-07-inspector.png"}})
+![Inspector Window]({{ "/assets/images/2018-04-07-inspector.png" | absolute_url }})
 </p>
 The inspector window is probably the most important window on the editor. The inspector shows all the information of the currently selected object. If the current object is a node this window will show all the information relative to this node:
  

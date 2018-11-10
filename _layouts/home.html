@@ -2,27 +2,59 @@
 layout: default
 ---
 
-{% include page-intro.html %}
-
-<main id="main" class="page-content" aria-label="Content">
-  <div class="index inner">
-    <div>{{ content }}</div>
-
-    <div>
-      <header class="section-title">
-        <h2>{{ site.data.theme.t.posts | default: 'Posts' }}{% if paginator.page > 1 %}{{ site.data.theme.t.page | default: 'Page' | prepend: ' - ' | append: ' ' }}{{ paginator.page }} {{ site.data.theme.t.of | default: 'of' }} {{ paginator.total_pages }}{% endif %}</h2>
-      </header>
-      <div class="entries-{{ page.entries_layout | default: 'list' }}">
-        {% if site.plugins contains 'jekyll-paginate' and page.paginate or site.gems contains 'jekyll-paginate' and page.paginate %}
-          {% comment %}
-            Add paginator.posts loop if jekyll-paginate plugin is enabled
-            and page.paginate == true
-          {% endcomment %}
-          {% include posts-paginated.html %}
-        {% else %}
-          {% include posts-all.html %}
-        {% endif %}
-      </div>
-    </div>
+<div class="home">
+  {% if site.theme_settings.header_text %}
+  <div id="main" class="call-out"
+  style="background-image: url('{{ site.baseurl }}/{{ site.theme_settings.header_text_feature_image }}')">
+    {{ site.theme_settings.header_text }}
   </div>
-</main>
+  {% endif %}
+
+  <div class="posts">
+    {% for post in paginator.posts %}
+    <div class="post-teaser">
+      {% if post.thumbnail %} 
+      <div class="post-img">
+         <img src="{{ site.baseurl }}/{{ post.thumbnail }}">
+      </div>
+      {% endif %}
+      <span>
+          <header>
+            <h1>
+              <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">
+                {{ post.title }}
+              </a>
+            </h1>
+            <p class="meta">
+              {{ post.date | date: "%B %-d, %Y" }}
+            </p>
+          </header>
+          <div class="excerpt">
+              {{ post.excerpt | strip_html | escape }}
+            <!--{{ post.content | strip_html | truncate: "250" }}-->
+            <!--<a class="button" href="{{ post.url | prepend: site.baseurl }}">
+              {{ site.theme_settings.str_continue_reading }}
+            </a>-->
+          </div>
+      </span>
+    </div>
+    {% endfor %}
+  </div>
+
+  {% if paginator.total_pages > 1 %}
+  <div class="pagination">
+    {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" class="button" >
+      <i class="fa fa-chevron-left"></i>
+      {{ site.theme_settings.str_previous_page }}
+    </a>
+    {% endif %}
+    {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}" class="button" >
+      {{ site.theme_settings.str_next_page }}
+      <i class="fa fa-chevron-right"></i>
+    </a>
+    {% endif %}
+  </div>
+  {% endif %}
+</div>

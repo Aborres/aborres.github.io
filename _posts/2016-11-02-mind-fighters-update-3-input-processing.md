@@ -32,10 +32,20 @@ Processing input for a fighter game is not an easy task. Multiple combos and the
 
 With all of this, the best approach that came into my mind was to develop a process relatively similar to a compiler parser. The system has 4 different parts:
 
+
+
+ 	
   * Input reading
+
+ 	
   * Input processing
+
+ 	
   * Character processing
+
+ 	
   * Character storing
+
 
 The first phase is the input reading. The first thing I did was create a manager which depending on the actual player, parses all the buttons that the player can use (gamepad/keyboard), and stores all the actions of this frame into a buffer. This phase also reads each axis and stores the active value of the joysticks in the buffer.
 
@@ -44,3 +54,7 @@ The second phase aim is to clear some possible fake actions in the buffer, for e
 Once the buffer is clean and ready for processing, the character processing unit reads the buffer and starts to parse depending on the primordial preferences of the actual player. For example, a really basic workflow could start parsing if the player has to run any action from the last frame input or from the combination of the last input with the unconsumed buffer commands. If the actions parser does not consume the last input, the last input enters the next parser. We could have decided that jump is more important than movement then, the player will check if he has to jump, if not, the last command will enter into the next unit. The last unit could be the movement itself, if the last action was a movement then the player will move and no command will be stored in the buffer, otherwise, the actual action will be stored in the persistent buffer of the player for later possible actions.
 
 The character storing is a simple unit that tries to pack in the best way possible the commands into the persistent buffer and tries to predict future movements that the player will realize. Working this way, I managed to create a stable system that was easy to extend with future actions or different fighters.
+
+
+
+

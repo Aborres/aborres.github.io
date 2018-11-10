@@ -27,11 +27,23 @@ tags:
 ---
 
 As our project is a smash bros like game, the camera results to be a really important element in our game. If we were making a street fighter like game the camera would have been a pretty straightforward task to do. But in our game, the camera has to resolve so many problems that it could doom our game. With this in mind, we make a list of requirements about what the system has to resolve:
+
+
+
  	
   * The camera has to be able to show all the players at the same time on screen (up to 8 players).
+
+ 	
   * The camera has to be able to rotate and reposition itself in order to show enough space for the player to foresee other players actions.
+
+ 	
   * The camera has to have a set of tools to allow our designers to create planes, effects (shakes and turnings), etc.
+
+ 	
   * The camera has to have enough configuration to allow the designers to create whatever they want to.
+
+
+
 
 With this in mind, I started thinking about how to resolve the movement and I tried many different approximations to this problem. At first, I developed a system where the camera generated planes and each plane contained a point with the position of the player as the middle point, with a percentage of rotation respect to the origin. With all of these planes, I managed to intersect them and average them to obtain a valid position and a valid rotation. The plane system seemed to work but not good enough and I was not really able to resolve the vertical align problem.
 

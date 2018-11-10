@@ -1,0 +1,28 @@
+---
+---
+
+@import "type-on-strap";
+
+.align_center {
+  align: center;
+  text-align: center;
+}
+
+.half_image {
+  width: 50%;
+}
+
+.align_image_left {
+  float: left;
+  padding-right: 20px;
+}
+
+.align_image_right {
+  float: right;
+  padding-left: 20px;
+}
+
+.image_caption {
+  padding: 0;
+  border: 0;
+}
