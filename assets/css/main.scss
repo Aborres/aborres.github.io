@@ -15,14 +15,32 @@
 .align_image_left {
   float: left;
   padding-right: 20px;
+  padding-left: 0px;
 }
 
 .align_image_right {
   float: right;
   padding-left: 20px;
+  padding-right: 0px;
 }
 
 .image_caption {
   padding: 0;
+  border: 0;
+}
+
+.center_table {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.image_two_cols_half_caption {
+  width:50%;
+  text-align:center;
+  vertical-align: top;
+  padding: 0;
+  padding-left: 10px;
+  padding-right: 10px;
   border: 0;
 }

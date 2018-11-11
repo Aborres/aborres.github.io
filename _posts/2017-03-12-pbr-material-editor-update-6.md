@@ -6,22 +6,15 @@ layout: post
 link: aborres.com/post/pbr-material-editor-update-6/
 slug: pbr-material-editor-update-6
 permalink: /post/pbr-material-editor-update-6/
+feature-img: "assets/images/header_mi.png"
 title: 'PBR: Material Editor – Update 6'
+thumbnail: "assets/images/2018-04-07-UE4.gif"
 wordpress_id: 432
 categories:
 - Post
 - PBR-Material-Editor
-tags:
-- games
-- Graphics
-- OpenGL
-- post
-- projects
-- Render
-- Rendering
-- teesside
-- uk
-- university
+tags: [ games, Graphics, OpenGL, post, projects, Render, Rendering, teesside, 
+        uk, university ]
 ---
 
 ### Unreal Engine 4: Physically Based Rendering

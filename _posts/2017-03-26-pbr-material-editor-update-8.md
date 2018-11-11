@@ -6,6 +6,8 @@ layout: post
 link: http://aborres.com/post/pbr-material-editor-update-8/
 slug: pbr-material-editor-update-8
 permalink: /post/pbr-material-editor-update-8/
+feature-img: "assets/images/header_mi.png"
+thumbnail: "assets/images/2018-04-07-irradiance_lobe.jpg"
 title: 'PBR: Material Editor – Update 8'
 wordpress_id: 465
 categories:
@@ -15,16 +17,8 @@ categories:
 - Post
 - Project
 - Text
-tags:
-- Graphics
-- OpenGL
-- post
-- projects
-- Render
-- Rendering
-- teesside
-- uk
-- university
+tags: [Graphics, OpenGL, post, projects, Render, Rendering, teesside, uk,
+       university]
 ---
 
 At this point of the development I have to focus on the final implementation and in the details, I have left to finish. Most of the work is at least done; however, I still have some details to finish and, more importantly, I still have some parts to implement inside of the editor. The main problem of a relatively big project is the number of possible unexpected changes and necessities that can appear. Sometimes things do not work as you expect or as you planned them and their changes can modify huge pieces of code (the code was making use of the old version). This can bring bugs and useless (for now) blocks of code into your implementation. I always try to only implement what it is really useful at this point and try to not flood my code with functionality that can be or can not be useful or maybe I will never use. This is because I spend time on extra functionality that I do not need right now maybe I will never require those functions and even more if I do not need them now, maybe I won't need them never, ending with lots of lost time.

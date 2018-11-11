@@ -7,6 +7,7 @@ link: aborres.com/post/pbr-material-editor-update-9/
 slug: pbr-material-editor-update-9
 permalink: /post/pbr-material-editor-update-9/
 title: 'PBR: Material Editor – Update 9'
+feature-img: "assets/images/header_mi.png"
 thumbnail: "assets/images/2018-04-07-picking.gif"
 wordpress_id: 478
 categories:
@@ -24,17 +25,12 @@ There is only one month left to finish this project. The due date is May 8th and
 
 The last step to integrate into my IBL implementation was the radiance map generation. The radiance represents the amount of light that hits the surface from an specific direction and bounces away. As you can see this term is used inside of the specular term of the lighting equation. Unreal Engine 4 model's use 2 sets of enviroment maps plus one extra texture where they codify the BRDF model they are using. The system is easy to use; however, it is not that straightforward to implement. The diffuse contribution is baked inside a cubemap representing the amount of light that reaches one fragment from all directions, the radiance contribution comes from a 2D texture which codifies the BRDF function and a set of N textures where the radiance contribution is stored depending on the roughness value of the surface. What is usually done is to store each diferent cubemap inside of each different mip map level of the radiance cubemap. Rougher surfaces requires less precision to represent reflexes (they become more blurred because of the surface). For example, lets think of a perfect smooth metallic ball, a smooth ball will behave as a mirror does, reflecting the environment with clarity because of the uniform light bounces; however, what happens if we sand this ball? The surface becomes rougher and the light will reflect with more dispersion than before, producing blurred images. Because of this phenomenon we need less precision to produce blurred reflexes; therefore, what most IBL implementations do is to calculate these environments in smaller textures and store them inside smaller mip map levels.
 
-| ![Radiance_Map]({{ "/assets/images/2018-04-07-radiance.jpg" | absolute_url }}){:width="256px"} | ![Irradiance_Map]({{
-  "/assets/images/2018-04-07-irradiance.jpg" | absolute_url }}){:width="256px"} |
-| *Example of cubemap face* | *Blurred version of the environment* |
+{% include image_two_cols.html url1="/assets/images/2018-04-07-radiance.jpg" description1="Example of cubemap face"
+url2="/assets/images/2018-04-07-irradiance.jpg" description2="Blurred version of the environment" size="256" %}
 
 The 2D texture only represents the BRDF depending on the roughness and the angle of the cosine of the normal with the view direction; therefore, this texture is environment independant and only changes depending on the BRDF that is being used. The whole process is not computionally complex; however, to approximate integrals can be tough and some times requires different tests and different compensation functions. Although, most models reach the same conclusion if your visuals are good even if your calculations are not, then your implementation is correct.
 
-<p class="align_center" markdown="1">
-![Lookup_Texture]({{ "/assets/images/2018-04-07-lookup_texture.jpg" | absolute_url }}){: width="256px"}
-<br>
-*Look Up Texure*
-</p>
+{% include image.html url="/assets/images/2018-04-07-lookup_texture.jpg" description="Look Up Texure" %}
 
 ### Editor
 
@@ -50,18 +46,8 @@ At last, now the editor allows the user to instantiate basic geometric forms ins
 
 ### Task List
 
-| **TODO** |
-| Integrate IBL generation inside of the editor |
-| Integrate material selection inside of the editor |
-| Integrate performance measurement |
-| Scene save/load |
-
-| **WOULD LIKE TO DO** |
-| Integrate more IBL models |
-| Integrate more PBR models |
-
-| **PROBABLY NOT DOING** |
-| Extensive testing and comparison of different models |
-| Integration of MonteCarlo based convolution (for comparisons) |
-| Spherical Harmonics |
-| Spherical Map support |
+| **TODO** | **MAYBE** | **PROBABLY NOT DOING** |
+| Integrate IBL generation inside of the editor | Integrate more IBL models | Extensive testing and comparison of different models |
+| Integrate material selection inside of the editor | Integrate more PBR models | Integration of MonteCarlo based convolution (for comparisons) |
+| Integrate performance measurement || Spherical Harmonics |
+| Scene save/load | | Spherical Map support |

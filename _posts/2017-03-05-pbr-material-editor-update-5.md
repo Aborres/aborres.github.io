@@ -7,7 +7,8 @@ link: http://aborres.com/post/pbr-material-editor-update-5/
 slug: pbr-material-editor-update-5
 permalink: /post/pbr-material-editor-update-5/
 title: 'PBR: Material Editor – Update 5'
-thumbnail: "assets/images/2018-04-07-picking.gif"
+thumbnail: "assets/images/bugvsfeature.jpg"
+feature-img: "assets/images/header_mi.png"
 wordpress_id: 407
 categories:
 - Graphics
@@ -24,7 +25,7 @@ tags: [games, Graphics, OpenGL, post, projects, Render, Rendering,
 This fifth week I was supposed to be working on the initial implementation of PBR and IBL; however, this week I have
 been pretty busy with some work/university stuff, even so, I have been working on some other tasks I was needing to
 complete before the realistic material implementation. One of the principal problems I have been messing with is a bug
-in the FBX importer. As I said in the [Update 3]({{ site.baseurl }}{% link _posts/2017-02-19-pbr-material-editor-update-3.md %}) FBX is a scene format that supports multiple formats and orientation and translations, this creates a difficult task even only to import a model. During this week I noticed that it was not loading properly the texture coordinates of some models and after lots of searches and tests and I have found and fixed the problem.  In some models the uvs were not being loaded correctly because of the export format, some modeling programs allow artists to flip the v coordinate and others allow them to negate the value. As I only want to support one texture coordinates format I ended normalizing all the texture formats into one generalized system and everything is working again.
+in the FBX importer. As I said in the [Update 3](/post/pbr-material-editor-update-3/) FBX is a scene format that supports multiple formats and orientation and translations, this creates a difficult task even only to import a model. During this week I noticed that it was not loading properly the texture coordinates of some models and after lots of searches and tests and I have found and fixed the problem.  In some models the uvs were not being loaded correctly because of the export format, some modeling programs allow artists to flip the v coordinate and others allow them to negate the value. As I only want to support one texture coordinates format I ended normalizing all the texture formats into one generalized system and everything is working again.
 
 
 ### Design Talk
@@ -50,16 +51,16 @@ In the cases where the view matrix is not orthonormal we can not assume that the
 
 I have been thinking about some requirements that the PBR and IBL need and I do not have yet on the engine and there are some features that I have not planned but I am integrating now. The first one is the support to change the rendering state. I knew that I was going to have the need of this change at some point and I was waiting for the moment to include it. Modify the rendering state means to be able to enable or disable some test (Depth, Stencil, Blend, RGB write, etc.) and to be able to set values and options for those tests (Depth: Less, Equal, Never, etc., Blend: ONE, SRC_Alpha, etc.). This is really important because some aspects and implementations require the ability to set up the actual state, for example, the lightning phase of the deferred rendering technique requires a different state than the gbuffer phase. And the state for opaque objects, sprites and transparent objects is different as well. The way I have introduced this concept into the engine is with a list of defines with different binary values. This way the user is allowed to mask different values into the same flag to set in one step the state of the engine, for example:
 
-```c
+{% highlight cpp %}
 uint32 flags = OE_STATE_ENABLE_DEPTH | OE_STATE_DEPTH_LESS | OE_STATE_DISABLE_BLEND;
-```
+{% endhighlight %}
 
 ### Editor & Uniforms
 
-Finally, I have extended the functionality of the editor. At this point the editor allows the user to load models, load textures, create materials, create uniforms, set uniform values and change the value of the parameters of a specific material. I have also implemented other features such as the possibility of debugging the rendering pipeline showing the gbuffer on screen and some configuration parameters. In this demo, I have a model already loaded into the editor with the default texture of the engine and I am changing its value for the correct albedo texture of the model.
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/B93xJFnbRrA?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-
+Finally, I have extended the functionality of the editor. At this point the editor allows the user to load models, load
+textures, create materials, create uniforms, set uniform values and change the value of the parameters of a specific
+material. I have also implemented other features such as the possibility of debugging the rendering pipeline showing the
+gbuffer on screen and some configuration parameters.  [In this demo](https://www.youtube.com/embed/B93xJFnbRrA?rel=0), I have a model already loaded into the editor with the default texture of the engine and I am changing its value for the correct albedo texture of the model.
 
 ### Next Step
 

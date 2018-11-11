@@ -6,21 +6,14 @@ layout: post
 link: aborres.com/post/pbr-material-editor-update-4/
 slug: pbr-material-editor-update-4
 permalink: /post/pbr-material-editor-update-4/
+feature-img: "assets/images/header_mi.png"
 title: 'PBR: Material Editor – Update 4'
+thumbnail: "assets/images/2018-04-07-modelloading4.jpg"
 wordpress_id: 364
 categories:
 - Post
 - PBR-Material-Editor
-tags:
-- games
-- Graphics
-- OpenGL
-- post
-- projects
-- Rendering
-- teesside
-- uk
-- university
+tags: [games, Graphics, OpenGL, post, projects, Rendering, teesside, uk, university ]
 ---
 
 ![Model Loading]({{ "/assets/images/2018-04-07-modelloading4.jpg" | absolute_url }})
@@ -46,15 +39,15 @@ The scene window shows all the current objects in the scene. By default, the sc
 </p>
 The inspector window is probably the most important window on the editor. The inspector shows all the information of the currently selected object. If the current object is a node this window will show all the information relative to this node:
  
-  * Transform: The transform section shows all the information of the node relative to its position in the world. I am basing my user API in the idea of Unity's style; therefore, this window will allow the user to modify the position, rotation and scale of the object.
+  * **Transform**: The transform section shows all the information of the node relative to its position in the world. I am basing my user API in the idea of Unity's style; therefore, this window will allow the user to modify the position, rotation and scale of the object.
  	
-  * Render: The Render section shows the information about how the actual node is being rendered. If one node does not show a render section that is because that node is only part of the scene graph.
+  * **Render**: The Render section shows the information about how the actual node is being rendered. If one node does not show a render section that is because that node is only part of the scene graph.
 
-    * Material: This section shows the actual shaders that are being used to render the model. In a near future, the material will allow the user to select different materials, load custom shaders and work with uniforms.
+    * **Material**: This section shows the actual shaders that are being used to render the model. In a near future, the material will allow the user to select different materials, load custom shaders and work with uniforms.
 
-    * Mesh: This section shows information about the geometry of the mesh.
+    * **Mesh**: This section shows information about the geometry of the mesh.
  	
-  * Camera: The camera section shows information about the configuration of the camera. From this section, the user will be allowed to modify parameters such as FOV, near plane, far plane, aspect ratio and type of projection (perspective / orthogonal).
+  * **Camera**: The camera section shows information about the configuration of the camera. From this section, the user will be allowed to modify parameters such as FOV, near plane, far plane, aspect ratio and type of projection (perspective / orthogonal).
 
 ### Extra Features
 

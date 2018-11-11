@@ -6,6 +6,8 @@ layout: post
 link: http://aborres.com/post/pbr-material-editor-update-1/
 slug: pbr-material-editor-update-1
 permalink: /post/pbr-material-editor-update-1/
+thumbnail: "assets/images/2018-04-07-MAIN_LOOP.png"
+feature-img: "assets/images/header_mi.png"
 title: 'PBR: Material Editor – Update 1'
 wordpress_id: 311
 categories:

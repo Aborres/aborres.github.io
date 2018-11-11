@@ -6,7 +6,9 @@ layout: post
 link: http://aborres.com/post/pbr-material-editor-introduction/
 slug: pbr-material-editor-introduction
 permalink: /post/pbr-material-editor-update-introduction/
+thumbnail: "assets/images/2018-04-07-engine_schedule.png"
 title: 'PBR: Material Editor - Introduction'
+feature-img: "assets/images/header_mi.png"
 wordpress_id: 294
 categories:
 - Graphics
@@ -14,15 +16,7 @@ categories:
 - Post
 - Project
 - PBR-Material-Editor
-tags:
-- Graphics
-- OpenGL
-- post
-- projects
-- Rendering
-- teesside
-- uk
-- university
+tags: [ Graphics, OpenGL, post, projects, Rendering, teesside, uk, university ]
 ---
 
 One of the most important modules in the Games Development Career in Teesside University (UK) is the Computing Project. Every year, students from the final year are asked to develop their own programming project alone. This is a good opportunity for us to investigate in those topics we care about the most. Some of us are working on artificial intelligence projects, others are working on procedural generation (for example: generating planets with different biomes) and some of us, like me, are working on computer graphics. I have decided to develop a new 3D engine from scratch and my idea is to develop a PBR material editor over this engine.

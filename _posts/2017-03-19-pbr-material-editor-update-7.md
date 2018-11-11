@@ -8,6 +8,7 @@ slug: pbr-material-editor-update-7
 permalink: /post/pbr-material-editor-update-7/
 title: 'PBR: Material Editor – Update 7'
 thumbnail: "assets/images/2018-04-07-pbr_demo7.gif"
+feature-img: "assets/images/header_mi.png"
 wordpress_id: 452
 categories:
 - Post

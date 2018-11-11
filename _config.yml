@@ -29,11 +29,11 @@ theme_settings:
   facebook:
   flickr:
   gitlab:
-  github: "aborres"
+  github:
   google_plus:
   instagram:
   keybase:
-  linkedin:  # Full URL
+  linkedin: https://www.linkedin.com/in/jose-manuel-naranjo-temprano/ # Full URL
   pinterest:
   reddit:
   soundcloud:
@@ -105,6 +105,9 @@ collections:
     output: true
     permalink: /:collection/:name
 
+relative_links:
+  enabled:     true
+  collections: false    
 
 # BUILD SETTINGS
 markdown: kramdown
@@ -112,6 +115,7 @@ highlighter: rouge
 sass:
   sass_dir: _sass
   style: :compressed
-plugins: [jekyll-paginate, jekyll-seo-tag]
+plugins: [jekyll-paginate, jekyll-seo-tag, jekyll-relative-links]
+
 #theme: type-on-strap # Uncomment if using the theme as a jekyll theme gem
 exclude: ["Gemfile", "Gemfile.lock", "type-on-strap.gemspec", "*.gem", "LICENSE", "README.md", "screenshot.png", "package.json", "node_modules", "gulpfile.js", ".idea/*"]

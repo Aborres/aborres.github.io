@@ -6,7 +6,9 @@ layout: post
 link: http://aborres.com/post/pbr-material-editor-update-2/
 slug: pbr-material-editor-update-2
 permalink: /post/pbr-material-editor-update-2/
+feature-img: "assets/images/header_mi.png"
 title: 'PBR: Material Editor – Update 2'
+thumbnail: "assets/images/opengl_logo.png"
 wordpress_id: 333
 categories:
 - Games
@@ -15,26 +17,16 @@ categories:
 - Post
 - Project
 - PBR-Material-Editor
-tags:
-- games
-- Graphics
-- OpenGL
-- post
-- projects
-- Rendering
-- teesside
-- uk
-- university
+tags: [ games, Graphics, OpenGL, post, projects, Rendering, teesside, uk, university ]
 ---
 
 ![OpenGL]({{ "/assets/images/opengl_logo.png" | absolute_url }})
 
-[In my first post](aborres.com/post/pbr-material-editor-introduction/), I introduced a schedule where I planned all the big tasks in my time from now to May. For this second week, I planned to be working on the Render Engine. I am producing an API independent library where the rendering API can be decided at the start of the application and can be even switched at runtime. I am using some concepts that [BGFX](https://github.com/bkaradzic/bgfx) introduces in its code; however, I am adapting its design to my necessities and modifying concepts where I think this library is wrong, at least in their usability. At this phase, I have decided to implement the OpenGL code inside the engine. The API works with a Renderer (abstract class) where all the graphics code is implemented and every inherited Renderer (depending on the active graphics library) has to implement those methods to work with the engine. The design of the Renderer is API independent, this means, the Renderer abstracts concepts such as binding (for the OpenGL machine state, or object oriented from DirectX). Each Renderer has to keep all its resources referenced and has to define all its constants. The communication of this API with the external user is made by Handlers. I wanted to keep these handlers to the minimum to enforce the design to be no API dependent so these handlers only declare an integer identifier which allows the graphical system to identify them into their state. From the engine perspective, the engine works with the classical rendering display list concept. I have called a class GPU and that class contains all the available rendering commands. All these commands are queued into a rendering buffer and the rendering thread will consume them as soon as it can. Once one frame is generated the engine starts to generate the next one. When the rendering thread has finished drawing the current frame it will check if it should start rendering the next one or if it should wait until the frame is processed. The generation of all these tasks is made from the engine thread and from all the threads that the engine uses in his processes. I am testing the engine with 4 offset frames between both systems and it is producing good results; however, I am planning to test different delays and to introduce even more frames. In this video, I am testing some features of the scene graph and I have added textures to the default material.
+[In my first post](/post/pbr-material-editor-update-introduction/), I introduced a schedule where I planned all the big tasks in my time from now to May. For this second week, I planned to be working on the Render Engine. I am producing an API independent library where the rendering API can be decided at the start of the application and can be even switched at runtime. I am using some concepts that [BGFX](https://github.com/bkaradzic/bgfx) introduces in its code; however, I am adapting its design to my necessities and modifying concepts where I think this library is wrong, at least in their usability. At this phase, I have decided to implement the OpenGL code inside the engine. The API works with a Renderer (abstract class) where all the graphics code is implemented and every inherited Renderer (depending on the active graphics library) has to implement those methods to work with the engine. The design of the Renderer is API independent, this means, the Renderer abstracts concepts such as binding (for the OpenGL machine state, or object oriented from DirectX). Each Renderer has to keep all its resources referenced and has to define all its constants. The communication of this API with the external user is made by Handlers. I wanted to keep these handlers to the minimum to enforce the design to be no API dependent so these handlers only declare an integer identifier which allows the graphical system to identify them into their state. From the engine perspective, the engine works with the classical rendering display list concept. I have called a class GPU and that class contains all the available rendering commands. All these commands are queued into a rendering buffer and the rendering thread will consume them as soon as it can. Once one frame is generated the engine starts to generate the next one. When the rendering thread has finished drawing the current frame it will check if it should start rendering the next one or if it should wait until the frame is processed. The generation of all these tasks is made from the engine thread and from all the threads that the engine uses in his processes. I am testing the engine with 4 offset frames between both systems and it is producing good results; however, I am planning to test different delays and to introduce even more frames. In this video, I am testing some features of the scene graph and I have added textures to the default material.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/uldAOysWHAc?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 Currently, I have implemented and tested all these elements on the engine:
- 	
   * Mesh
   * Shader
   * Material

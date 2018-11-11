@@ -6,6 +6,8 @@ layout: post
 link: aborres.com/post/pbr-material-editor-update-3/
 slug: pbr-material-editor-update-3
 permalink: /post/pbr-material-editor-update-3/
+feature-img: "assets/images/header_mi.png"
+thumbnail: "assets/images/FBX_Review_Splash.png"
 title: 'PBR: Material Editor – Update 3'
 wordpress_id: 350
 categories:
@@ -15,18 +17,8 @@ categories:
 - Post
 - Project
 - PBR-Material-Editor
-tags:
-- Deferred
-- games
-- Graphics
-- OpenGL
-- post
-- projects
-- Render
-- Rendering
-- teesside
-- uk
-- university
+tags: [ Deferred, games, Graphics, OpenGL, post, projects, Render, Rendering,
+        teesside, uk, university ]
 ---
 
 ![FBX]({{ "/assets/images/FBX_Review_Splash.png" | absolute_url }})
@@ -37,9 +29,19 @@ This week I have been working in multiple areas I thought should be done before 
 
 ![Deferred Rendering 4 textures]({{ "/assets/images/2018-04-07-Deferred.png" | absolute_url }})
 
-However, I took advantage of this situation and I adapted some parts in the process to make them work more accordingly with the engine design. For example, one of the areas I worked on more was the framebuffer integration. Framebuffers are designed to easily work with textures, materials and other buffers but with the new adaptation of the rendering (with the cameras performing the actual draw) I needed to adapt them to be drawn by a camera or to allow cameras to draw their info inside them. Also, I tested the past week new integration (the composer). The composer allowed me to quickly implement and perform tests over my rendering pipeline. The actual composer has three phases and each phase is performed differently for each type rendering object. In this simulation, I tested the C++ composer version because at this point I do not need the advantages of the scripting until I have some kind of interface working on the engine which allows me to reload scripts in real time. After all this work I started working on advanced rendering techniques such as PBR or IBL; however, most of those techniques require of 3D texture or cubemaps; therefore, my next step was to support into the engine this kind of textures. I made this tweaking my rendering API, now cubemaps are supported inside the texture functions and the way the API expects those textures is a block of aligned memory where all the 6 textures are sort by the OpenGL convention. To test them, I implemented an example of skybox into the engine:
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/5t6Q3t0vnrs?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+However, I took advantage of this situation and I adapted some parts in the process to make them work more accordingly
+with the engine design. For example, one of the areas I worked on more was the framebuffer integration. Framebuffers are
+designed to easily work with textures, materials and other buffers but with the new adaptation of the rendering (with
+the cameras performing the actual draw) I needed to adapt them to be drawn by a camera or to allow cameras to draw their
+info inside them. Also, I tested the past week new integration (the composer). The composer allowed me to quickly
+implement and perform tests over my rendering pipeline. The actual composer has three phases and each phase is performed
+differently for each type rendering object. In this simulation, I tested the C++ composer version because at this point
+I do not need the advantages of the scripting until I have some kind of interface working on the engine which allows me
+to reload scripts in real time. After all this work I started working on advanced rendering techniques such as PBR or
+IBL; however, most of those techniques require of 3D texture or cubemaps; therefore, my next step was to support into
+the engine this kind of textures. I made this tweaking my rendering API, now cubemaps are supported inside the texture
+functions and the way the API expects those textures is a block of aligned memory where all the 6 textures are sort by
+the OpenGL convention. To test them, I implemented an example of skybox into the [engine](https://www.youtube.com/embed/fjxkg-Gaufg).
 
 ##  IO
 
@@ -49,12 +51,25 @@ Sooner or later, I knew that I was to need some kind of Input/Output management 
 ## Model loading
 
 
-One of the most common model formats is [OBJ](https://en.wikipedia.org/wiki/Wavefront_.obj_file). OBJ stores all the information of the model inside a text file. All the vertex info is stored in plain text, dividing the information in vertex, normals, uvs, and index. This makes OBJ a really simple format to parse and integrate into the engine. One simple parser would read each line, it would check and separate the line depending on the line info and store the information into memory. This format even supports material loading; however, most of the material definitions are using old shading parameters and they could not be really useful in some engines. OBJ is widely used between artists; however, the actual requirements are leaving aside this format. Currently, [FBX](https://en.wikipedia.org/wiki/FBX) is becoming the standard. FBX supports multiple information inside itself. FBX is more than a model format, these files include inside them full information to import and export full scenes (models, animations, lights, cameras, textures, and much more). FBX is being developed by Autodesk, the company producing [3ds Max](http://www.autodesk.com/products/3ds-max/overview) and [Maya](http://www.autodesk.com/products/maya/overview), the two most used modeling programs. Nevertheless, the documentation of this SDK is really outdated, there are no real examples of use and the wide support of features of this library ends into a relatively complex task to integrate this format. This lack of information with the huge size of the kit (+1GB) can scare some developers and probably the best option is to develop an external tool to parse and export models into a custom format and make the engine work with that custom extension. This also improves the performance in loading models and optimizes the size of these models into the project. I ended integrating the full SDK into the engine; however, I will probably remove it and I will develop an external tool for this. Here is an example of a model being loaded in my engine with drag & drop system.
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/fjxkg-Gaufg?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-
+One of the most common model formats is [OBJ](https://en.wikipedia.org/wiki/Wavefront_.obj_file). OBJ stores all the
+information of the model inside a text file. All the vertex info is stored in plain text, dividing the information in
+vertex, normals, uvs, and index. This makes OBJ a really simple format to parse and integrate into the engine. One
+simple parser would read each line, it would check and separate the line depending on the line info and store the
+information into memory. This format even supports material loading; however, most of the material definitions are using
+old shading parameters and they could not be really useful in some engines. OBJ is widely used between artists; however,
+the actual requirements are leaving aside this format. Currently, [FBX](https://en.wikipedia.org/wiki/FBX) is becoming
+the standard. FBX supports multiple information inside itself. FBX is more than a model format, these files include
+inside them full information to import and export full scenes (models, animations, lights, cameras, textures, and much
+more). FBX is being developed by Autodesk, the company producing [3ds
+Max](http://www.autodesk.com/products/3ds-max/overview) and [Maya](http://www.autodesk.com/products/maya/overview), the
+two most used modeling programs. Nevertheless, the documentation of this SDK is really outdated, there are no real
+examples of use and the wide support of features of this library ends into a relatively complex task to integrate this
+format. This lack of information with the huge size of the kit (+1GB) can scare some developers and probably the best
+option is to develop an external tool to parse and export models into a custom format and make the engine work with that
+custom extension. This also improves the performance in loading models and optimizes the size of these models into the
+project. I ended integrating the full SDK into the engine; however, I will probably remove it and I will develop an
+external tool for this. Here is an example of a model being loaded in my engine with drag & drop system: [link](https://www.youtube.com/watch?v=fjxkg-Gaufg)
 
 ## Editor
-
 
 Finally, one of the things I have done this week was to separate the actual editor from my test area. I have created a new project and I have moved all my test code into that project. This way I am leaving the editor project free of engine tests. Also, I have been working on some editor features. I have already created the main class for the future editor and I have integrated the GUI draw into the engine main draw. At first, I am going to use IMGUI for the GUI design but maybe I will change this library for others with more/different features. Next week, I will be working on PBR and IBL.
