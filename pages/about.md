@@ -14,7 +14,7 @@ wordpress_id: 6
 
 My name is Jose M. Naranjo and I am currently working as an engine programmer at Ubisoft.
 
-Previouly, I was a programmer in a small startup in Valencia (Spain), working on graphics, engine and scripting.
+Previously, I was a programmer in a small startup in Valencia (Spain), working on graphics, engine and scripting.
 
 Linkedin profile:
 
